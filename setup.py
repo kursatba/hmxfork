@@ -14,7 +14,7 @@ REQUIREMENTS = [
 ]
 
 setup(
-    name='hmx-v2-python',
+    name='hmxfork',
     version='1.0.0',
     packages=find_packages(),
     package_data={
@@ -23,15 +23,15 @@ setup(
     description='HMXv2 Python SDK',
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
-    url='https://github.com/HMXOrg/v2-sdk-python',
+    url='https://github.com/kursatba/hmxfork',
     author='HMXOrg',
-    license='MIT',
+    license='Apache',
     author_email='kursattek@gmail.com',
     install_requires=REQUIREMENTS,
     keywords='hmx exchange perp dex defi ethereum eth arbitrum',
     classifiers=[
       'Intended Audience :: Developers',
-      'License :: OSI Approved :: MIT License',
+      'License :: OSI Approved :: Apache License',
       'Operating System :: OS Independent',
       'Programming Language :: Python :: 3.11',
       'Programming Language :: Python',
