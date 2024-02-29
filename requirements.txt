@@ -3,6 +3,5 @@ eth-account
 eth-abi
 uniswap-universal-router-decoder
 web3>6.4.0
-simple-multicall
 responses
 python-dotenv
