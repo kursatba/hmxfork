@@ -71,6 +71,13 @@ MARKET_INJ_USD = 40
 MARKET_DOT_USD = 41
 MARKET_SEI_USD = 42
 MARKET_ATOM_USD = 43
+MARKET_PEPE_USD = 44
+MARKET_SHIB_USD = 45
+MARKET_USD_SEK = 46
+MARKET_ICP_USD = 47
+MARKET_MANTA_USD = 48
+MARKET_STRK_USD = 49
+MARKET_PYTH_USD = 50
 
 # ------ Token Profiles ------
 TOKEN_PROFILE = {
@@ -266,6 +273,13 @@ ASSET_INJ = "INJ"
 ASSET_DOT = "DOT"
 ASSET_SEI = "SEI"
 ASSET_ATOM = "ATOM"
+ASSET_PEPE = "1000PEPE"
+ASSET_SHIB = "1000SHIB"
+ASSET_SEK = "SEK"
+ASSET_ICP = "ICP"
+ASSET_MANTA = "MANTA"
+ASSET_STRK = "STRK"
+ASSET_PYTH = "PYTH"
 
 ASSETS = [
     ASSET_ETH,
@@ -320,6 +334,13 @@ ASSETS = [
     ASSET_DOT,
     ASSET_SEI,
     ASSET_ATOM,
+    ASSET_PEPE,
+    ASSET_SHIB,
+    ASSET_SEK,
+    ASSET_ICP,
+    ASSET_MANTA,
+    ASSET_STRK,
+    ASSET_PYTH,
 ]
 
 # ------ Asset IDs Map ----
@@ -339,50 +360,57 @@ COLLATERAL_ASSET_ID_MAP = {
 
 # ------ Market ----
 MARKET_PROFILE = {
-    MARKET_ETH_USD: {"name": "ETHUSD", "asset": ASSET_ETH},
-    MARKET_BTC_USD: {"name": "BTCUSD", "asset": ASSET_BTC},
-    MARKET_AAPL_USD: {"name": "AAPLUSD", "asset": ASSET_AAPL},
-    MARKET_JPY_USD: {"name": "JPYUSD", "asset": ASSET_JPY},
-    MARKET_XAU_USD: {"name": "XAUUSD", "asset": ASSET_XAU},
-    MARKET_AMZN_USD: {"name": "AMZNUSD", "asset": ASSET_AMZN},
-    MARKET_MSFT_USD: {"name": "MSFTUSD", "asset": ASSET_MSFT},
-    MARKET_TSLA_USD: {"name": "TSLAUSD", "asset": ASSET_TSLA},
-    MARKET_EUR_USD: {"name": "EURUSD", "asset": ASSET_EUR},
-    MARKET_XAG_USD: {"name": "XAGUSD", "asset": ASSET_XAG},
-    MARKET_AUD_USD: {"name": "AUDUSD", "asset": ASSET_AUD},
-    MARKET_GBP_USD: {"name": "GBPUSD", "asset": ASSET_GBP},
-    MARKET_ADA_USD: {"name": "ADAUSD", "asset": ASSET_ADA},
-    MARKET_MATIC_USD: {"name": "MATICUSD", "asset": ASSET_MATIC},
-    MARKET_SUI_USD: {"name": "SUIUSD", "asset": ASSET_SUI},
-    MARKET_ARB_USD: {"name": "ARBUSD", "asset": ASSET_ARB},
-    MARKET_OP_USD: {"name": "OPUSD", "asset": ASSET_OP},
-    MARKET_LTC_USD: {"name": "LTCUSD", "asset": ASSET_LTC},
-    MARKET_COIN_USD: {"name": "COINUSD", "asset": ASSET_COIN},
-    MARKET_GOOG_USD: {"name": "GOOGUSD", "asset": ASSET_GOOG},
-    MARKET_BNB_USD: {"name": "BNBUSD", "asset": ASSET_BNB},
-    MARKET_SOL_USD: {"name": "SOLUSD", "asset": ASSET_SOL},
-    MARKET_QQQ_USD: {"name": "QQQUSD", "asset": ASSET_QQQ},
-    MARKET_XRP_USD: {"name": "XRPUSD", "asset": ASSET_XRP},
-    MARKET_NVDA_USD: {"name": "NVDAUSD", "asset": ASSET_NVDA},
-    MARKET_LINK_USD: {"name": "LINKUSD", "asset": ASSET_LINK},
-    MARKET_USD_CHF: {"name": "USDCHF", "asset": ASSET_CHF},
-    MARKET_DOGE_USD: {"name": "DOGEUSD", "asset": ASSET_DOGE},
-    MARKET_USD_CAD: {"name": "USDCAD", "asset": ASSET_CAD},
-    MARKET_USD_SGD: {"name": "USDSGD", "asset": ASSET_SGD},
-    MARKET_USD_CNH: {"name": "USDCNH", "asset": ASSET_CNH},
-    MARKET_USD_HKD: {"name": "USDHKD", "asset": ASSET_HKD},
-    MARKET_BCH_USD: {"name": "BCHUSD", "asset": ASSET_BCH},
-    MARKET_MEME_USD: {"name": "MEMEUSD", "asset": ASSET_MEME},
-    MARKET_DIX_USD: {"name": "DIXUSD", "asset": ASSET_DIX},
-    MARKET_JTO_USD: {"name": "JTOUSD", "asset": ASSET_JTO},
-    MARKET_STX_USD: {"name": "STXUSD", "asset": ASSET_STX},
-    MARKET_ORDI_USD: {"name": "ORDIUSD", "asset": ASSET_ORDI},
-    MARKET_TIA_USD: {"name": "TIAUSD", "asset": ASSET_TIA},
-    MARKET_AVAX_USD: {"name": "AVAXUSD", "asset": ASSET_AVAX},
-    MARKET_INJ_USD: {"name": "INJUSD", "asset": ASSET_INJ},
-    MARKET_DOT_USD: {"name": "DOTUSD", "asset": ASSET_DOT},
-    MARKET_SEI_USD: {"name": "SEIUSD", "asset": ASSET_SEI},
-    MARKET_ATOM_USD: {"name": "ATOMUSD", "asset": ASSET_ATOM},
+    MARKET_ETH_USD: {"name": "ETHUSD", "asset": ASSET_ETH, "slug": "eth-usd"},
+    MARKET_BTC_USD: {"name": "BTCUSD", "asset": ASSET_BTC, "slug": "btc-usd"},
+    MARKET_AAPL_USD: {"name": "AAPLUSD", "asset": ASSET_AAPL, "slug": "aapl-usd"},
+    MARKET_JPY_USD: {"name": "JPYUSD", "asset": ASSET_JPY, "slug": "jpy-usd"},
+    MARKET_XAU_USD: {"name": "XAUUSD", "asset": ASSET_XAU, "slug": "xau-usd"},
+    MARKET_AMZN_USD: {"name": "AMZNUSD", "asset": ASSET_AMZN, "slug": "amzn-usd"},
+    MARKET_MSFT_USD: {"name": "MSFTUSD", "asset": ASSET_MSFT, "slug": "msft-usd"},
+    MARKET_TSLA_USD: {"name": "TSLAUSD", "asset": ASSET_TSLA, "slug": "tsla-usd"},
+    MARKET_EUR_USD: {"name": "EURUSD", "asset": ASSET_EUR, "slug": "eur-usd"},
+    MARKET_XAG_USD: {"name": "XAGUSD", "asset": ASSET_XAG, "slug": "xag-usd"},
+    MARKET_AUD_USD: {"name": "AUDUSD", "asset": ASSET_AUD, "slug": "aud-usd"},
+    MARKET_GBP_USD: {"name": "GBPUSD", "asset": ASSET_GBP, "slug": "gbp-usd"},
+    MARKET_ADA_USD: {"name": "ADAUSD", "asset": ASSET_ADA, "slug": "ada-usd"},
+    MARKET_MATIC_USD: {"name": "MATICUSD", "asset": ASSET_MATIC, "slug": "matic-usd"},
+    MARKET_SUI_USD: {"name": "SUIUSD", "asset": ASSET_SUI, "slug": "sui-usd"},
+    MARKET_ARB_USD: {"name": "ARBUSD", "asset": ASSET_ARB, "slug": "arb-usd"},
+    MARKET_OP_USD: {"name": "OPUSD", "asset": ASSET_OP, "slug": "op-usd"},
+    MARKET_LTC_USD: {"name": "LTCUSD", "asset": ASSET_LTC, "slug": "ltc-usd"},
+    MARKET_COIN_USD: {"name": "COINUSD", "asset": ASSET_COIN, "slug": "coin-usd"},
+    MARKET_GOOG_USD: {"name": "GOOGUSD", "asset": ASSET_GOOG, "slug": "goog-usd"},
+    MARKET_BNB_USD: {"name": "BNBUSD", "asset": ASSET_BNB, "slug": "bnb-usd"},
+    MARKET_SOL_USD: {"name": "SOLUSD", "asset": ASSET_SOL, "slug": "sol-usd"},
+    MARKET_QQQ_USD: {"name": "QQQUSD", "asset": ASSET_QQQ, "slug": "qqq-usd"},
+    MARKET_XRP_USD: {"name": "XRPUSD", "asset": ASSET_XRP, "slug": "xrp-usd"},
+    MARKET_NVDA_USD: {"name": "NVDAUSD", "asset": ASSET_NVDA, "slug": "nvda-usd"},
+    MARKET_LINK_USD: {"name": "LINKUSD", "asset": ASSET_LINK, "slug": "link-usd"},
+    MARKET_USD_CHF: {"name": "USDCHF", "asset": ASSET_CHF, "slug": "usd-chf"},
+    MARKET_DOGE_USD: {"name": "DOGEUSD", "asset": ASSET_DOGE, "slug": "doge-usd"},
+    MARKET_USD_CAD: {"name": "USDCAD", "asset": ASSET_CAD, "slug": "usd-cad"},
+    MARKET_USD_SGD: {"name": "USDSGD", "asset": ASSET_SGD, "slug": "usd-sgd"},
+    MARKET_USD_CNH: {"name": "USDCNH", "asset": ASSET_CNH, "slug": "usd-cnh"},
+    MARKET_USD_HKD: {"name": "USDHKD", "asset": ASSET_HKD, "slug": "usd-hkd"},
+    MARKET_BCH_USD: {"name": "BCHUSD", "asset": ASSET_BCH, "slug": "bch-usd"},
+    MARKET_MEME_USD: {"name": "MEMEUSD", "asset": ASSET_MEME, "slug": "meme-usd"},
+    MARKET_DIX_USD: {"name": "DIXUSD", "asset": ASSET_DIX, "slug": "dix-usd"},
+    MARKET_JTO_USD: {"name": "JTOUSD", "asset": ASSET_JTO, "slug": "jto-usd"},
+    MARKET_STX_USD: {"name": "STXUSD", "asset": ASSET_STX, "slug": "stx-usd"},
+    MARKET_ORDI_USD: {"name": "ORDIUSD", "asset": ASSET_ORDI, "slug": "ordi-usd"},
+    MARKET_TIA_USD: {"name": "TIAUSD", "asset": ASSET_TIA, "slug": "tia-usd"},
+    MARKET_AVAX_USD: {"name": "AVAXUSD", "asset": ASSET_AVAX, "slug": "avax-usd"},
+    MARKET_INJ_USD: {"name": "INJUSD", "asset": ASSET_INJ, "slug": "inj-usd"},
+    MARKET_DOT_USD: {"name": "DOTUSD", "asset": ASSET_DOT, "slug": "dot-usd"},
+    MARKET_SEI_USD: {"name": "SEIUSD", "asset": ASSET_SEI, "slug": "sei-usd"},
+    MARKET_ATOM_USD: {"name": "ATOMUSD", "asset": ASSET_ATOM, "slug": "atom-usd"},
+    MARKET_PEPE_USD: {"name": "1000PEPEUSD", "asset": ASSET_PEPE, "slug": "1000pepe-usd"},
+    MARKET_SHIB_USD: {"name": "1000SHIBUSD", "asset": ASSET_SHIB, "slug": "1000shib-usd"},
+    MARKET_USD_SEK: {"name": "USDSEK", "asset": ASSET_SEK, "slug": "usd-sek"},
+    MARKET_ICP_USD: {"name": "ICPUSD", "asset": ASSET_ICP, "slug": "icp-usd"},
+    MARKET_MANTA_USD: {"name": "MANTAUSD", "asset": ASSET_MANTA, "slug": "manta-usd"},
+    MARKET_STRK_USD: {"name": "STRKUSD", "asset": ASSET_STRK, "slug": "strk-usd"},
+    MARKET_PYTH_USD: {"name": "PYTHUSD", "asset": ASSET_PYTH, "slug": "pyth-usd"},
 }
 
 # Address
