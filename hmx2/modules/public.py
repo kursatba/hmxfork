@@ -11,6 +11,8 @@ from hmx2.constants import (
     CONFIG_STORAGE_ABI_PATH,
     TRADE_HELPER_ABI_PATH,
     CALCULATOR_ABI_PATH,
+    LIMIT_TRADE_HANDLER_ADDRESS,
+    LIMIT_TRADE_HANDLER_ABI_PATH,
     HOURS,
     DAYS,
     YEARS,
@@ -43,6 +45,9 @@ class Public(object):
         )
         self.calculator_instance = load_contract(
             self.eth_provider, CALCULATOR_ADDRESS, CALCULATOR_ABI_PATH
+        )
+        self.limit_trade_handler_instance = load_contract(
+            self.eth_provider, LIMIT_TRADE_HANDLER_ADDRESS, LIMIT_TRADE_HANDLER_ABI_PATH
         )
         self.multicall_instance = Multicall(
             w3=self.eth_provider, chain="arbitrum", custom_address=MULTICALL_ADDRESS
@@ -541,6 +546,80 @@ class Public(object):
 
     def __get_hlp_tvl(self, is_max_price: bool = True):
         return self.calculator_instance.functions.getHLPValueE30(is_max_price).call()
+
+    def get_open_orders(self, account: str, sub_account_id: int):
+        subacc = self.get_sub_account(account, sub_account_id)
+        limit_orders = self.limit_trade_handler_instance.functions.getLimitActiveOrdersBySubAccount(
+            subacc, 200, 0
+        ).call()
+        market_orders = self.limit_trade_handler_instance.functions.getMarketActiveOrdersBySubAccount(
+            subacc, 200, 0
+        ).call()
+        ret = {"limit_orders": [], "market_orders": []}
+
+        for order in limit_orders:
+            (
+                account,
+                tp_token,
+                trigger_above_threshold,
+                reduce_only,
+                size_delta,
+                subaccount_id,
+                order_index,
+                market_index,
+                trigger_price,
+                acceptable_price,
+                execution_fee,
+                createdTimestamp,
+            ) = order
+            ret["limit_orders"].append(
+                {
+                    "account": account,
+                    "tp_token": tp_token,
+                    "trigger_above_threshold": trigger_above_threshold,
+                    "reduce_only": reduce_only,
+                    "size_delta": size_delta,
+                    "trigger_price": trigger_price,
+                    "subaccount_id": subaccount_id,
+                    "order_index": order_index,
+                    "market_index": market_index,
+                    "acceptable_price": acceptable_price,
+                    "execution_fee": execution_fee,
+                    "created_timestamp": createdTimestamp,
+                }
+            )
+        for order in market_orders:
+            (
+                account,
+                tp_token,
+                trigger_above_threshold,
+                reduce_only,
+                size_delta,
+                subaccount_id,
+                order_index,
+                market_index,
+                trigger_price,
+                acceptable_price,
+                execution_fee,
+                createdTimestamp,
+            ) = order
+            ret["market_orders"].append(
+                {
+                    "account": account,
+                    "tp_token": tp_token,
+                    "trigger_above_threshold": trigger_above_threshold,
+                    "reduce_only": reduce_only,
+                    "size_delta": size_delta,
+                    "trigger_price": trigger_price,
+                    "subaccount_id": subaccount_id,
+                    "order_index": order_index,
+                    "market_index": market_index,
+                    "acceptable_price": acceptable_price,
+                    "execution_fee": execution_fee,
+                    "created_timestamp": createdTimestamp,
+                }
+            )
+        return ret
 
     def get_price(self, market_index: int, buy: bool = None, size: float = None):
         """Get price from a market (adaptive price if input 'buy' and 'size')

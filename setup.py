@@ -15,7 +15,7 @@ REQUIREMENTS = [
 
 setup(
     name='hmxfork',
-    version='1.0.6',
+    version='1.0.7',
     packages=find_packages(),
     package_data={
       'hmx2': ['abis/*.json'],
