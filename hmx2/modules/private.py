@@ -35,7 +35,6 @@ decimal.getcontext().rounding = "ROUND_HALF_DOWN"
 
 
 class Private(object):
-
     def __init__(
         self,
         chain_id: int,
