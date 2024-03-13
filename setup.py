@@ -8,14 +8,13 @@ REQUIREMENTS = [
     'eth-abi',
     'uniswap-universal-router-decoder',
     'web3>6.4.0',
-    'simple-multicall',
     'responses',
     'python-dotenv>=1.0.0'
 ]
 
 setup(
     name='hmxfork',
-    version='1.0.7',
+    version='1.0.8',
     packages=find_packages(),
     package_data={
       'hmx2': ['abis/*.json'],
